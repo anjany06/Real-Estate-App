@@ -31,4 +31,7 @@ export default {
     },
   },
   plugins: [],
+  corePlugins: {
+    preflight: true, // Ensures Tailwind's preflight (reset) is enabled
+  },
 };

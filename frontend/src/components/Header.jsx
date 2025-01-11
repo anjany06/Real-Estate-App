@@ -35,7 +35,7 @@ const Header = () => {
     <header
       className={`${
         active ? "py-1 bg-white shadow-md" : "py-2"
-      }max-padd-container fixed top-0 w-full left-0 right-0 z-50 transition-all duration-200`}
+      }max-padd-container fixed top-0 w-full left-0 right-0 z-50 px-3 lg:px-8 transition-all duration-200`}
     >
       {/* CONTAINER */}
       <div className="flexBetween">

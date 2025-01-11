@@ -65,11 +65,13 @@ const Hero = () => {
               className="h-[46px] border-2 border-white shadow-md rounded-full absolute left-40"
             />
 
-            <div className="h-[64px] w-[46px] border-2 border-white shadow-sm bg-slate-500/70 text-white absolute left-48 rounded-full flexCenter text-xs font-semibold">
+            <div className="h-[46px] w-[46px] border-2 border-white shadow-sm bg-slate-500/70 text-white absolute left-48 rounded-full flexCenter text-xs font-semibold">
               210k+
             </div>
           </div>
-          <div className="h5 !font-semibold max-w-52">People successfully got their dream home</div>
+          <div className="h5 !font-semibold max-w-52">
+            People successfully got their dream home
+          </div>
         </div>
         <div className="flex flex-col">
           <div className="flex gap-2 text-yellow-500 text-xs">
@@ -80,7 +82,8 @@ const Hero = () => {
             <FaStar />
           </div>
           <div className="bold-14 m:bold-16 relative top-1">
-            127k <span className="regular-14 sm:regula-16">Excellent Reviews</span>
+            127k{" "}
+            <span className="regular-14 sm:regula-16">Excellent Reviews</span>
           </div>
         </div>
       </div>
