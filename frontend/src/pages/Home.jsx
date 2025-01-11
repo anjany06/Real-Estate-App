@@ -1,10 +1,13 @@
-import React from 'react'
+import React from "react";
+import Hero from "../components/Hero.jsx";
 
 const Home = () => {
   return (
-    <div>Home Page</div>
-    
-  )
-}
+    <main className="mx-auto max-w-[1440px] bg-gradient-to-r from-primary via-white to-white">
+      Home Page
+      <Hero />
+    </main>
+  );
+};
 
-export default Home
+export default Home;

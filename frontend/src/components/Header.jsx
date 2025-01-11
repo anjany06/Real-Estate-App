@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
 import Navbar from "./Navbar";
@@ -12,8 +12,31 @@ const Header = () => {
   const toggleMenu = () => {
     setMenuOpened((prev) => !prev);
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        if (menuOpened) {
+          setMenuOpened(false);
+        }
+      }
+      //detect scroll
+      setActive(window.scrollY > 30);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    //clean up the event Listener when component unmounts
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [menuOpened]); // Effect runs when menupened changes
+
   return (
-    <header className="py-2 max-padd-container fixed top-0 w-full left-0 right-0 z-50 transition-all duration-200">
+    <header
+      className={`${
+        active ? "py-1 bg-white shadow-md" : "py-2"
+      }max-padd-container fixed top-0 w-full left-0 right-0 z-50 transition-all duration-200`}
+    >
       {/* CONTAINER */}
       <div className="flexBetween">
         {/* LOGO */}
