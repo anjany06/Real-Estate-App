@@ -6,6 +6,7 @@ const Home = () => {
     <main className="mx-auto max-w-[1440px] bg-gradient-to-r from-primary via-white to-white">
       Home Page
       <Hero />
+      <Feature />
     </main>
   );
 };
