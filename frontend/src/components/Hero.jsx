@@ -20,7 +20,7 @@ const Hero = () => {
         <div className="inline-flex items-center justify-center gap-4 bg-white rounded-ring-1 ring-slate-900/5 mt-4">
           <div className="text-center regular-14 leading-tight pl-5 cursor-default">
             <p className="regular-14">
-              <span className="uppercase font-bold ">10% off</span>
+              <span className="uppercase font-bold ">10% off </span>
               On All Properties
             </p>
           </div>
