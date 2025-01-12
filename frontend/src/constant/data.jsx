@@ -3,10 +3,7 @@ import img2 from '../assets/img2.png'
 import img3 from '../assets/img3.png'
 import img4 from '../assets/img4.png'
 import img5 from '../assets/img5.png'
-import blog1 from '../assets/blog1.jpg'
-import blog2 from '../assets/blog2.jpg'
-import blog3 from '../assets/blog3.jpg'
-import blog4 from '../assets/blog4.jpg'
+
 
 // icons
 import {
@@ -167,28 +164,28 @@ export const PROPERTIES = [
 
 
 // properties data
-export const BLOGS = [
-  {
-    title: "Tranquil Terrace Tranquility Haven",
-    image: blog1,
-    category: "Cottage",
-  },
-  {
-    title: "Oceanview Oasis Serenity Escape",
-    image: blog2,
-    category: "Residence",
-  },
-  {
-    title: "Sunrise Sanctuary Solace Retreat",
-    image: blog3,
-    category: "House",
-  },
-  {
-    title: "Urban Elegance Sophistication Haven",
-    image: blog4,
-    category: "Property",
-    }
-]
+// export const BLOGS = [
+//   {
+//     title: "Tranquil Terrace Tranquility Haven",
+//     image: blog1,
+//     category: "Cottage",
+//   },
+//   {
+//     title: "Oceanview Oasis Serenity Escape",
+//     image: blog2,
+//     category: "Residence",
+//   },
+//   {
+//     title: "Sunrise Sanctuary Solace Retreat",
+//     image: blog3,
+//     category: "House",
+//   },
+//   {
+//     title: "Urban Elegance Sophistication Haven",
+//     image: blog4,
+//     category: "Property",
+//     }
+// ]
 
 
 // FOOTER SECTION

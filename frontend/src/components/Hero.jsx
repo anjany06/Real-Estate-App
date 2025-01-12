@@ -81,7 +81,7 @@ const Hero = () => {
             <FaStar />
             <FaStar />
           </div>
-          <div className="bold-14 m:bold-16 relative top-1">
+          <div className="bold-14 md:bold-16 relative top-1">
             127k{" "}
             <span className="regular-14 sm:regula-16">Excellent Reviews</span>
           </div>
