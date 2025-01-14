@@ -17,7 +17,7 @@ import { PROPERTIES } from "../constant/data";
 const Properties = () => {
   return (
     <section className="max-padd-container">
-      <div className="py-16 xl:py-28 rounded-3xl">
+      <div className="pt-16 xl:pt-28 rounded-3xl">
         <span className="medium-18">Your Future Home Awaits</span>
         <h2 className="h2">Find Your Dream Here</h2>
         <div className="flexBetween mt-8 mb-6">
