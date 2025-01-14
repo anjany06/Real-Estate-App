@@ -11,26 +11,28 @@ import "swiper/css/navigation";
 // import './styles.css';
 
 // import required modules
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import { PROPERTIES } from "../constant/data";
 
 const Properties = () => {
   return (
-    <section>
-      <div>
-        <span>Your Future Home Awaits</span>
-        <h2>Find Your Dream Here</h2>
-        <div>
+    <section className="max-padd-container">
+      <div className="py-16 xl:py-28 rounded-3xl">
+        <span className="medium-18">Your Future Home Awaits</span>
+        <h2 className="h2">Find Your Dream Here</h2>
+        <div className="flexBetween mt-8 mb-6">
           <h5>
-            <span>Showing 1-9</span>out of 3k properties
+            <span className="font-bold">Showing 1-9 </span>out of 3k properties
           </h5>
-          <Link to={"/"}>
+          <Link
+            to={"/"}
+            className="bg-secondary text-white text-2xl rounded-md p-2 flexCenter"
+          >
             <VscSettings />
           </Link>
         </div>
         {/* CONTAINER */}
         <Swiper
-          centeredSlides={true}
           autoplay={{
             delay: 3000,
             disableOnInteraction: false,
