@@ -141,7 +141,7 @@ const Footer = () => {
       </div>
       {/* copyrights */}
       <p className="max-padd-container medium-14 py-2 px-8 rounded flexBetween mt-6 bg-gradient-to-r from-primary via-white to-white">
-       <b>2025 ZenHomes</b> All rights reserved
+        <b>2025 ZenHomes</b> All rights reserved
       </p>
     </footer>
   );
