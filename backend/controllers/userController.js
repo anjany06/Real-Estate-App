@@ -19,7 +19,7 @@ export const createUser = asyncHandler(async (req, res) => {
 //CONTROLLER FUNCTION FOR BOOK A RESIDENCY VIST
 export const bookVisit = asyncHandler(async (req, res) => {
   const { email, date } = req.body;
-  const id = req.params;
+  const { id } = req.params;
 
   try {
     const alreadyBooked = await prisma.user.findUnique({
