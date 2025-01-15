@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import { userRoute } from "./routes/userRoute.js";
+import { residencyRoute } from "./routes/residencyRoute.js";
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ app.use(cookieParser());
 app.use(cors());
 
 app.use("/api/user", userRoute);
+app.use("/api/residency", residencyRoute);
 
 app.get("/", (req, res) => {
   res.send("API Working");
