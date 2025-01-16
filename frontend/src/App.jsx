@@ -6,6 +6,7 @@ import Layout from "./components/Layout";
 import Listing from "./pages/Listing";
 import Property from "./pages/Property";
 import Favourites from "./pages/Favourites";
+import Bookings from "./pages/Bookings";
 
 const App = () => {
   return (
@@ -19,7 +20,7 @@ const App = () => {
               <Route path=":propertyId" element={<Property />} />
             </Route>
             <Route path="/bookings" element={<Bookings />} />
-            <Route path="/favorites" element={<Favourites />} />
+            <Route path="/favourites" element={<Favourites />} />
           </Route>
         </Routes>
       </Suspense>
