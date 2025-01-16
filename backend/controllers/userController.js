@@ -44,3 +44,18 @@ export const bookVisit = asyncHandler(async (req, res) => {
     throw new Error(error.message);
   }
 });
+
+// CONTROLLER FUNCTION FOR GETTING ALL BOOKINGS OF A USER
+export const getAllBookings = asyncHandler(async (req, res) => {
+  const { email } = req.body;
+  try {
+    const bookings = await prisma.user.findUnique({
+      where: { email: email },
+      select: { bookedVisits: true },
+    });
+
+    res.status(200).send(bookings);
+  } catch (error) {
+    throw new Error(error.message);
+  }
+});
