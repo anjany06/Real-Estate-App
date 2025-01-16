@@ -8,6 +8,9 @@ import Property from "./pages/Property";
 import Favourites from "./pages/Favourites";
 import Bookings from "./pages/Bookings";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   const queryClient = new QueryClient();
@@ -28,6 +31,8 @@ const App = () => {
           </Routes>
         </Suspense>
       </BrowserRouter>
+      <ToastContainer />
+      <ReactQueryDevtools initialsOpen={false} />
     </QueryClientProvider>
   );
 };

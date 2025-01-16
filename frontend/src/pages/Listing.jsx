@@ -11,7 +11,9 @@ const Listing = () => {
         <div>
           <Searchbar filter={filter} setFilter={setFilter} />
           {/* CONTAINER */}
-          <div></div>
+          <div>
+
+          </div>
         </div>
       </div>
     </main>
