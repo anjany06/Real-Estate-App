@@ -87,8 +87,8 @@ export const cancelBooking = asyncHandler(async (req, res) => {
     throw new Error(error.message);
   }
 });
-
 //CONTROLLER FUNCTION FOR ADDING A RESIDENCY TO THE FAVORITES OF A USER
+
 export const toFav = asyncHandler(async (req, res) => {
   const { email } = req.body;
   const { rid } = req.params;
@@ -123,6 +123,22 @@ export const toFav = asyncHandler(async (req, res) => {
 
       res.send({ message: "Updated Favourites", user: updateUser });
     }
+  } catch (error) {
+    throw new Error(error.message);
+  }
+});
+
+//CONTROLLER FUNCTION FOR FETCHING ALL FAVORITES OF A USER
+export const getAllFav = asyncHandler(async (req, res) => {
+  const { email } = req.body;
+  try {
+    const favResd = await prisma.user.findUnique({
+      where: { email },
+      select: {
+        favResidenciesID: true,
+      },
+    });
+    res.status(200).send(favResd);
   } catch (error) {
     throw new Error(error.message);
   }
