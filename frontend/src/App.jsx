@@ -11,29 +11,35 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { ErrorBoundary } from "react-error-boundary";
 
 const App = () => {
   const queryClient = new QueryClient();
   return (
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Routes>
-            <Route element={<Layout />}>
-              <Route path="/" element={<Home />} />
-              <Route path="/listing">
-                <Route index element={<Listing />} />
-                <Route path=":propertyId" element={<Property />} />
+    <ErrorBoundary
+      FallbackComponent={() => <div>Error occurred</div>}
+      onError={(error, errorInfo) => console.log(error, errorInfo)}
+    >
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Routes>
+              <Route element={<Layout />}>
+                <Route path="/" element={<Home />} />
+                <Route path="/listing">
+                  <Route index element={<Listing />} />
+                  <Route path=":propertyId" element={<Property />} />
+                </Route>
+                <Route path="/bookings" element={<Bookings />} />
+                <Route path="/favourites" element={<Favourites />} />
               </Route>
-              <Route path="/bookings" element={<Bookings />} />
-              <Route path="/favourites" element={<Favourites />} />
-            </Route>
-          </Routes>
-        </Suspense>
-      </BrowserRouter>
-      <ToastContainer />
-      <ReactQueryDevtools initialsOpen={false} />
-    </QueryClientProvider>
+            </Routes>
+          </Suspense>
+        </BrowserRouter>
+        <ToastContainer />
+        <ReactQueryDevtools initialsOpen={false} />
+      </QueryClientProvider>
+    </ErrorBoundary>
   );
 };
 
