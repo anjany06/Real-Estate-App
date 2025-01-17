@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Searchbar from "../components/Searchbar";
 import axios from "axios";
 import Item from "../components/Item";
-
+import { getAllProperties } from "../utils/api";
 import { PuffLoader } from "react-spinners";
 
 const Listing = () => {
@@ -13,10 +13,8 @@ const Listing = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:4000/api/residency/allresd"
-        );
-        setData(response.data);
+        const response = await getAllProperties();
+        setData(response);
       } catch (error) {
         console.error(error);
       }
@@ -42,11 +40,11 @@ const Listing = () => {
   if (data.length > 0) {
     return (
       <main className="my-24">
-        <div className="max-padd-container py-10 xl:py-24 bg-gradient-to-r via-white to-white">
+        <div className="max-padd-container py-10 bg-gradient-to-r from-primary via-white to-white">
           <div>
             <Searchbar filter={filter} setFilter={setFilter} />
             {/* CONTAINER */}
-            <div>
+            <div className="grid gap-6 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mt-10">
               {filteredProperties &&
                 filteredProperties.map((property) => (
                   <Item key={property.id} property={property} />

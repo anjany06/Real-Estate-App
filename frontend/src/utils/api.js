@@ -15,7 +15,7 @@ export const getAllProperties = async () => {
     if (response.status === 400 || response.status === 500) {
       throw response.data;
     }
-    return response.data;
+    return response.data.reverse();
   } catch (error) {
     toast.error("Something went wrong");
     throw error;
