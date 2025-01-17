@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { VscSettings } from "react-icons/vsc";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -14,7 +14,22 @@ import "swiper/css/navigation";
 import { Autoplay } from "swiper/modules";
 import { PROPERTIES } from "../constant/data";
 
+import { getAllProperties } from "../utils/api";
+
 const Properties = () => {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getAllProperties();
+        setData(response);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <section className="max-padd-container">
       <div className="pt-16 xl:pt-28 rounded-3xl">
@@ -54,7 +69,7 @@ const Properties = () => {
           modules={[Autoplay]}
           className="h-[488px] md:h-[533px] xl:[422px] mt-5"
         >
-          {PROPERTIES.slice(0, 6).map((property) => (
+          {data.slice(0, 6).map((property) => (
             <SwiperSlide key={property.title}>
               <Item property={property} />
             </SwiperSlide>
