@@ -34,7 +34,7 @@ const Header = () => {
   return (
     <header
       className={`${
-        active ? "py-1 bg-white shadow-md" : "py-2"
+        active ? "shadow-xl py-2 bg-white " : "py-2 "
       }max-padd-container fixed top-0 w-full left-0 right-0 z-50 px-3 lg:px-8 transition-all duration-200`}
     >
       {/* CONTAINER */}

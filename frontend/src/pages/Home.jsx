@@ -8,7 +8,7 @@ import Testimonials from "../components/Testimonials.jsx";
 
 const Home = () => {
   return (
-    <main className="mx-auto max-w-[1440px] bg-gradient-to-r from-primary via-white to-white">
+    <main className="w-full bg-gradient-to-r from-primary via-white to-white">
       <Hero />
       <Feature />
       <Achievements />
