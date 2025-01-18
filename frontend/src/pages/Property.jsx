@@ -8,6 +8,7 @@ import {
   MdOutlineGarage,
 } from "react-icons/md";
 import { CgRuler } from "react-icons/cg";
+import Map from "../components/Map";
 
 const Property = () => {
   const [data, setData] = useState();
@@ -90,6 +91,14 @@ const Property = () => {
           <div className="flexBetween pt-7">
             <button className="btn-dark">Book Visit</button>
           </div>
+        </div>
+        {/* RIGHT SIDE */}
+        <div>
+          <Map
+            address={data?.address}
+            city={data?.city}
+            country={data?.country}
+          />
         </div>
       </div>
     </section>
