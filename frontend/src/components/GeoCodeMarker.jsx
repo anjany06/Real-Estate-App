@@ -1,8 +1,9 @@
 import React from 'react'
+import { Marker } from 'react-leaflet'
 
 const GeoCodeMarker = () => {
   return (
-    <div>GeoCodeMarker</div>
+    <Marker positon= {positon}></Marker>
   )
 }
 
