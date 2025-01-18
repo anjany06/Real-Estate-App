@@ -21,3 +21,21 @@ export const getAllProperties = async () => {
     throw error;
   }
 };
+
+export const getProperty = (id) => {
+  return api
+    .get(`/residency/${id}`, {
+      timeout: 10 * 1000,
+    })
+    .then((response) => {
+      if (response.status === 400 || response.status === 500) {
+        throw response.data;
+      }
+      // console.log(response.data); // Now you should see the correct data
+      return response.data;
+    })
+    .catch((error) => {
+      toast.error("Something went wrong");
+      throw error;
+    });
+};
