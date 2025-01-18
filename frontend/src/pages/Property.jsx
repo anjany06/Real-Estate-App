@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { getProperty } from "../utils/api";
-import { FaHeart, FaLocationDot } from "react-icons/fa6";
+import { FaHeart, FaLocationDot, FaStar } from "react-icons/fa6";
+import {
+  MdOutlineBathtub,
+  MdOutlineBed,
+  MdOutlineGarage,
+} from "react-icons/md";
+import { CgRuler } from "react-icons/cg";
 
 const Property = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState();
   const { pathname } = useLocation();
   const id = pathname.split("/").slice(-1)[0];
 
@@ -25,9 +31,9 @@ const Property = () => {
   }, [id]);
 
   return (
-    <section>
+    <section className="max-padd-container my-[99px]">
       {/* IMAGE */}
-      <div className="relative">
+      <div className="p-2 relative">
         <img
           src={data?.image}
           alt={data?.title}
@@ -35,16 +41,55 @@ const Property = () => {
         />
         {/* LIKE BIN */}
         <div className="absolute top-8 right-8">
-          <FaHeart className="text-white" />
+          <FaHeart className="text-white text-xl" />
         </div>
       </div>
       {/* CONTAINER */}
-      <div>
+      <div className="xl:flexBetween gap-8">
         {/* LEFT SIDE */}
-        <div>
-          <p>
+        <div className="flex-1">
+          <p className="flexStart gap-x-2">
             <FaLocationDot />
+            <div>
+              {data?.address} {data?.city} {data?.country}
+            </div>
           </p>
+          <div className="flexBetween pt-3">
+            <h4 className="bold-20 line-clamp-1">{data?.title}</h4>
+            <div className="bold-20">${data?.price}.00</div>
+          </div>
+          <div className="flexBetween py-1">
+            <h5 className="bold-16 my-1 text-secondary">{data?.city}</h5>
+            <div className="flex items-baseline gap-2 text-secondary">
+              <h4 className="bold-18 relative bottom-0.5 text-black">5.0</h4>
+              <FaStar />
+              <FaStar />
+              <FaStar />
+              <FaStar />
+              <FaStar />
+            </div>
+          </div>
+          <div className="flex gap-4">
+            <div className="flexCenter gap-x-2 border-r border-slate-900/50 pr-4 font-[500]">
+              <MdOutlineBed />
+              {data?.facilities.bedrooms}
+            </div>
+            <div className="flexCenter gap-x-2 border-r border-slate-900/50 pr-4 font-[500]">
+              <MdOutlineBathtub /> {data?.facilities.bedrooms}
+            </div>
+            <div className="flexCenter gap-x-2 border-r border-slate-900/50 pr-4 font-[500]">
+              <MdOutlineGarage /> {data?.facilities.bedrooms}
+            </div>
+            <div className="flexCenter gap-x-2 border-r border-slate-900/50 pr-4 font-[500]">
+              <CgRuler />
+              400
+            </div>
+          </div>
+          <h4>Property Details</h4>
+          <p>{data?.description}</p>
+          <div className="flexBetween pt-7">
+            <button className="btn-dark">Book Visit</button>
+          </div>
         </div>
       </div>
     </section>
