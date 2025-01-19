@@ -18,36 +18,47 @@ const GeoCodeMarker = ({ address }) => {
 
   useEffect(() => {
     const geocode = async () => {
-      const response = await fetch(
-        `https://nominatim.openstreetmap.org/search?q=${address}&format=json`
-      );
-      const data = await response.json();
-      if (data.length > 0) {
-        const lat = data[0].lat;
-        const lon = data[0].lon;
-        setPosition([lat, lon]);
-      } else {
-        console.log("No geocoding results found");
+      try {
+        const response = await fetch(
+          `https://nominatim.openstreetmap.org/search?q=${address}&format=json`
+        );
+        const data = await response.json();
+        if (data.length > 0) {
+          const lat = data[0].lat;
+          const lon = data[0].lon;
+          setPosition([lat, lon]);
+        } else {
+          console.log("No geocoding results found");
+        }
+      } catch (error) {
+        console.error(error);
       }
     };
+
+    const esriGeocode = async () => {
+      try {
+        ELG.geocode()
+          .text(address)
+          .run((err, results, response) => {
+            if (results?.results?.length > 0) {
+              const { lat, lng } = results?.results[0].latlng;
+              setPosition([lat, lng]);
+              map.flyTo([lat, lng], 6);
+            }
+          });
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
     geocode();
-  }, [address]);
+    esriGeocode();
+  }, [address, map]);
 
   if (!position) {
     return null;
   }
 
-  useEffect(() => {
-    ELG.geocode()
-      .text(address)
-      .run((err, results, response) => {
-        if (results?.results?.length > 0) {
-          const { lat, lng } = results?.results[0].latlng;
-          setPosition([lat, lng]);
-          map.flyTo([lat, lng], 6);
-        }
-      });
-  }, [address]);
   return (
     <Marker position={position} icon={DefaultIcon}>
       <Popup />
