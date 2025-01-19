@@ -4,14 +4,20 @@ import GeoCodeMarker from "./GeoCodeMarker";
 
 const Map = ({ address, city, country }) => {
   return (
-    <MapContainer
-      center={[53.35, 18.8]}
-      zoom={1}
-      scrollWheelZoom="h-[24rem] w-full mt-5 z-0"
+    <div
+      id="map"
+      style={{ height: "400px", width: "100%", border: "1px solid black" }}
     >
-      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-      <GeoCodeMarker address={`${address} ${city} ${country}`} />
-    </MapContainer>
+      <MapContainer
+        center={[53.35, 18.8]}
+        zoom={10}
+        scrollWheelZoom
+        style={{ height: "100%", width: "100%" }}
+      >
+        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        <GeoCodeMarker address={`${address} ${city} ${country}`} />
+      </MapContainer>
+    </div>
   );
 };
 

@@ -279,3 +279,8 @@
     @apply text-[14px] font-[700];
   }
 }
+@media (min-width: 768px) {
+  #map {
+    height: 80vh;
+  }
+}

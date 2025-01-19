@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { DefaultContext } from "react-icons";
+import React, { useState, useEffect } from "react";
 import { Marker, Popup, useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -12,11 +11,33 @@ let DefaultIcon = L.icon({
 });
 L.Marker.prototype.options.icon = DefaultIcon;
 
-const GeoCodeMarker = () => {
+const GeoCodeMarker = ({ address }) => {
   const map = useMap();
-  const [positon, setPosition] = useState([60, 19]);
+  const [position, setPosition] = useState(null);
+
+  useEffect(() => {
+    const geocode = async () => {
+      const response = await fetch(
+        `https://nominatim.openstreetmap.org/search?q=${address}&format=json`
+      );
+      const data = await response.json();
+      if (data.length > 0) {
+        const lat = data[0].lat;
+        const lon = data[0].lon;
+        setPosition([lat, lon]);
+      } else {
+        console.log("No geocoding results found");
+      }
+    };
+    geocode();
+  }, [address]);
+
+  if (!position) {
+    return null;
+  }
+
   return (
-    <Marker positon={positon} icon={DefaultIcon}>
+    <Marker position={position} icon={DefaultIcon}>
       <Popup />
     </Marker>
   );
