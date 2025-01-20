@@ -5,6 +5,7 @@ import Navbar from "./Navbar";
 import { MdMenu, MdClose } from "react-icons/md";
 import { LuUserRound } from "react-icons/lu";
 import { useAuth0 } from "@auth0/auth0-react";
+import ProfileMenu from "./ProfileMenu";
 
 const Header = () => {
   const [active, setActive] = useState(false);
@@ -32,7 +33,7 @@ const Header = () => {
     };
   }, [menuOpened]); // Effect runs when menupened changes
 
-  const { loginWithRedirect } = useAuth0();
+  const { loginWithRedirect, isAuthenticated, user, logout } = useAuth0();
   return (
     <header
       className={`${
@@ -77,13 +78,17 @@ const Header = () => {
               className="xl:hidden cursor-pointer text-3xl"
             />
           )}
-          <button
-            onClick={loginWithRedirect}
-            className="flexCenter gap-x-2 px-5 btn-dark"
-          >
-            <LuUserRound className="text-xl" />
-            <span>Log In</span>
-          </button>
+          {/* {isAuthenticated ? (
+            <button
+              onClick={loginWithRedirect}
+              className="flexCenter gap-x-2 px-5 btn-dark"
+            >
+              <LuUserRound className="text-xl" />
+              <span>Log In</span>
+            </button>
+          ) : ( */}
+          <ProfileMenu user={user} Logout={logout} />
+          {/* )} */}
         </div>
       </div>
     </header>
