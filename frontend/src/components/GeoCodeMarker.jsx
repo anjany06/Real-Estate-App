@@ -43,7 +43,7 @@ const GeoCodeMarker = ({ address }) => {
             if (results?.results?.length > 0) {
               const { lat, lng } = results?.results[0].latlng;
               setPosition([lat, lng]);
-              map.flyTo([lat, lng], 15);
+              map.flyTo([lat, lng], 8);
             }
           });
       } catch (error) {
