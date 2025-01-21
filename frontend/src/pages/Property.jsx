@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { getProperty } from "../utils/api";
 import { FaHeart, FaLocationDot, FaStar } from "react-icons/fa6";
@@ -12,6 +12,8 @@ import Map from "../components/Map";
 import useAuthCheck from "../hooks/useAuthCheck";
 import BookingModal from "../components/BookingModal";
 import { useAuth0 } from "@auth0/auth0-react";
+import UserDetailContext from "../context/UserDetailContext";
+import { Button } from "@mantine/core";
 
 const Property = () => {
   const [data, setData] = useState();
@@ -21,6 +23,11 @@ const Property = () => {
   const [modelOpened, setModelOpened] = useState(false);
   const { validateLogin } = useAuthCheck();
   const { user } = useAuth0();
+
+  const {
+    userDetails: { token, bookings },
+    setUserDetails,
+  } = useContext(UserDetailContext);
 
   const fetchData = async () => {
     try {
@@ -95,14 +102,31 @@ const Property = () => {
           <h4>Property Details</h4>
           <p>{data?.description}</p>
           <div className="flexBetween pt-7">
-            <button
-              onClick={() => {
-                validateLogin() && setModelOpened(true);
-              }}
-              className="btn-dark"
-            >
-              Book Visit
-            </button>
+            {bookings?.map((booking) => booking.id).includes(id) ? (
+              <>
+                <Button
+                  onClick={() => {}}
+                  variant="outline"
+                  w={"100%"}
+                  color="red"
+                >
+                  Cancel Booking
+                </Button>
+                <p className="text-red-500 medium-15 ml-3">
+                  You've already Booked visit for{" "}
+                  {bookings?.filter((booking) => booking.id === id)[0].date}
+                </p>
+              </>
+            ) : (
+              <button
+                onClick={() => {
+                  validateLogin() && setModelOpened(true);
+                }}
+                className="btn-dark"
+              >
+                Book Visit
+              </button>
+            )}
             <BookingModal
               opened={modelOpened}
               setOpened={setModelOpened}
