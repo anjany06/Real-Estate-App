@@ -137,14 +137,16 @@ const Property = () => {
                 </p>
               </>
             ) : (
-              <button
+              <Button
                 onClick={() => {
                   validateLogin() && setModelOpened(true);
                 }}
-                className="btn-dark"
+                variant="filled"
+                w={"50%"}
+                color="black"
               >
                 Book Visit
-              </button>
+              </Button>
             )}
             <BookingModal
               opened={modelOpened}
