@@ -5,19 +5,19 @@ import Header from "./Header";
 import { useAuth0 } from "@auth0/auth0-react";
 import UserDetailContext from "../context/UserDetailContext";
 import { useMutation } from "react-query";
+import { createUser } from "../utils/api";
 
 const Layout = () => {
   const { isAuthenticated, user } = useAuth0();
   const { setUserDetails } = useContext(UserDetailContext);
-  const {} = useMutation({
-    mutationKey : [user?.email],
-    mutationFn: (token) => createUser(user?.email, token)
+  const { mutate } = useMutation({
+    mutationKey: [user?.email],
+    mutationFn: (token) => createUser(user?.email, token),
+  });
 
-  })
-
-  useEffect(()=>{
-
-  })
+  useEffect(() => {
+    isAuthenticated && mutate();
+  }, [isAuthenticated]);
   return (
     <>
       <div>

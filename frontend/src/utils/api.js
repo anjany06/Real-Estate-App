@@ -39,7 +39,7 @@ export const getProperty = (id) => {
     });
 };
 
-export const createUser = async (email) => {
+export const createUser = async (email, token) => {
   try {
     await api.post(
       "/user/register",
