@@ -10,6 +10,8 @@ import {
 import { CgRuler } from "react-icons/cg";
 import Map from "../components/Map";
 import useAuthCheck from "../hooks/useAuthCheck";
+import BookingModal from "../components/BookingModal";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Property = () => {
   const [data, setData] = useState();
@@ -18,6 +20,7 @@ const Property = () => {
 
   const [modelOpened, setModelOpened] = useState(false);
   const { validateLogin } = useAuthCheck();
+  const { user } = useAuth0();
 
   const fetchData = async () => {
     try {
@@ -101,11 +104,16 @@ const Property = () => {
             >
               Book Visit
             </button>
-            
+            <BookingModal
+              opened={modelOpened}
+              setOpened={setModelOpened}
+              propertyId={id}
+              email={user?.email}
+            />
           </div>
         </div>
         {/* RIGHT SIDE */}
-        <div>
+        <div className="flex-1">
           <Map
             address={data?.address}
             city={data?.city}
