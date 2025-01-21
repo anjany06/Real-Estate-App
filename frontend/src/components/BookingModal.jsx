@@ -8,6 +8,7 @@ const BookingModal = ({ opened, setOpened, email, propertyId }) => {
       onClose={() => setOpened(false)}
       title="Select your date of visit"
       centered
+      zIndex={1000}
     >
       <div>
         <span>Booking modal is here</span>

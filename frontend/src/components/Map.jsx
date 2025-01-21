@@ -6,7 +6,14 @@ const Map = ({ address, city, country }) => {
   return (
     <div
       id="map"
-      style={{ height: "400px", width: "100%", border: "1px solid black" }}
+      style={{
+        height: "400px",
+        width: "100%",
+        border: "1px solid black",
+        position: "relative",
+        zIndex: 1,
+        marginTop: "20px",
+      }}
     >
       <MapContainer
         center={[53.35, 18.8]}

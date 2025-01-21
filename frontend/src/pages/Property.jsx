@@ -26,7 +26,6 @@ const Property = () => {
     try {
       const response = await getProperty(id);
       setData((prevData) => {
-        console.log(response); // Log the data after it has been updated
         return response;
       });
     } catch (error) {
