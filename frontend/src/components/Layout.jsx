@@ -30,7 +30,7 @@ const Layout = () => {
           token: res,
         }));
 
-        console.log(res);
+
       } catch (error) {
         console.error(error);
       }

@@ -9,11 +9,15 @@ import {
 } from "react-icons/md";
 import { CgRuler } from "react-icons/cg";
 import Map from "../components/Map";
+import useAuthCheck from "../hooks/useAuthCheck";
 
 const Property = () => {
   const [data, setData] = useState();
   const { pathname } = useLocation();
   const id = pathname.split("/").slice(-1)[0];
+
+  const [modelOpened, setModelOpened] = useState(false);
+  const { validateLogin } = useAuthCheck();
 
   const fetchData = async () => {
     try {
@@ -89,7 +93,15 @@ const Property = () => {
           <h4>Property Details</h4>
           <p>{data?.description}</p>
           <div className="flexBetween pt-7">
-            <button className="btn-dark">Book Visit</button>
+            <button
+              onClick={() => {
+                validateLogin() && setModelOpened(true);
+              }}
+              className="btn-dark"
+            >
+              Book Visit
+            </button>
+            
           </div>
         </div>
         {/* RIGHT SIDE */}
