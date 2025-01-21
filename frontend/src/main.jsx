@@ -9,7 +9,7 @@ import "@mantine/dates/styles.css";
 createRoot(document.getElementById("root")).render(
   <Auth0Provider
     domain="dev-uwmuixrpr6yb67gz.us.auth0.com"
-    clientId="0aLXpcYxGlMsZ7w4sk1GqDQKHJVWTngc"
+    clientId="TWnkFTDd9To1SnDuQjOHfieY3Xj9nMUp"
     authorizationParams={{
       redirect_uri: "http://localhost:5173",
     }}

@@ -34,7 +34,6 @@ const Header = () => {
   }, [menuOpened]); // Effect runs when menupened changes
 
   const { loginWithRedirect, isAuthenticated, user, logout } = useAuth0();
-  console.log(isAuthenticated);
   return (
     <header
       className={`${
@@ -79,7 +78,8 @@ const Header = () => {
               className="xl:hidden cursor-pointer text-3xl"
             />
           )}
-          {isAuthenticated ? (
+
+          {!isAuthenticated ? (
             <button
               onClick={loginWithRedirect}
               className="flexCenter gap-x-2 px-5 btn-dark"
@@ -88,7 +88,7 @@ const Header = () => {
               <span>Log In</span>
             </button>
           ) : (
-            <ProfileMenu user={user} Logout={logout} />
+            <ProfileMenu user={user} logout={logout} />
           )}
         </div>
       </div>
