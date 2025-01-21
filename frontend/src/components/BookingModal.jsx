@@ -14,20 +14,7 @@ const BookingModal = ({ opened, setOpened, email, propertyId }) => {
     setUserDetails,
   } = useContext(UserDetailContext);
 
-  const { mutate: cancelBooking, isLoading: canceliling } = useMutation({
-    mutationFn: () => removeBooking(id, user?.email, token),
-    onSuccess: () => {
-      setUserDetails((prev) => ({
-        ...prev,
-        bookings: prev.bookings.filter((booking) => booking?.id !== id),
-      }));
-
-      toast.success("Booking Cancelled", {
-        position: "bottom-right",
-      });
-    },
-  });
-
+  
   const handleBookingSuccess = () => {
     toast.success("You have booked the visit", {
       position: "bottom-right",
