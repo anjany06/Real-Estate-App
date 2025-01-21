@@ -8,7 +8,7 @@ import { useMutation } from "react-query";
 import { createUser } from "../utils/api";
 
 const Layout = () => {
-  const { isAuthenticated, user, getAccessTokenWithPopup } = useAuth0();
+  const { isAuthenticated, user, getAccessTokenSilently } = useAuth0();
   const { setUserDetails } = useContext(UserDetailContext);
   const { mutate } = useMutation({
     mutationKey: [user?.email],
@@ -18,7 +18,7 @@ const Layout = () => {
   useEffect(() => {
     const getTokenAndRegister = async () => {
       try {
-        const res = await getAccessTokenWithPopup({
+        const res = await getAccessTokenSilently({
           authorizationParams: {
             audience: "http://localhost:4000",
             scope: "openid profile email",
