@@ -31,11 +31,26 @@ export const getProperty = (id) => {
       if (response.status === 400 || response.status === 500) {
         throw response.data;
       }
-      // console.log(response.data); // Now you should see the correct data
       return response.data;
     })
     .catch((error) => {
       toast.error("Something went wrong");
       throw error;
     });
+};
+
+export const createUser = async (email) => {
+  try {
+    await api.post(
+      "/user/register",
+      { email },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+  } catch (error) {
+    toast.error("Something went wrong, Please try again");
+  }
 };
