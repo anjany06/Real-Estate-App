@@ -72,7 +72,10 @@ const Property = () => {
         />
         {/* LIKE BIN */}
         <div className="absolute top-8 right-8">
-          <HeartBtn />
+          <HeartBtn 
+          id={id}
+          
+          />
         </div>
       </div>
       {/* CONTAINER */}
