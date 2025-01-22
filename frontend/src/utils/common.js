@@ -5,3 +5,7 @@ export const updateFavourites = (id, favourites) => {
     return [...favourites, id];
   }
 };
+
+export const checkFavourites = (id, favourites) => {
+  return favourites?.includes(id) ? "#8ac243" : "white";
+};

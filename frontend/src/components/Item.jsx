@@ -7,6 +7,7 @@ import {
 } from "react-icons/md";
 import { CgRuler } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
+import HeartBtn from "./HeartBtn";
 const Item = ({ property }) => {
   const navigate = useNavigate();
   return (
@@ -22,7 +23,7 @@ const Item = ({ property }) => {
           className="h-[13rem] w-full aspect-square object-cover"
         />
         <div className="absolute top-4 right-6">
-          <FaHeart className="text-white text-lg" />
+          <HeartBtn id={property.id} />
         </div>
       </div>
       {/* INFO */}
