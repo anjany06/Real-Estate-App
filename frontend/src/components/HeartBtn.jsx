@@ -5,6 +5,7 @@ import UserDetailContext from "../context/UserDetailContext";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useMutation } from "react-query";
 import { toFav } from "../utils/api";
+import { updateFavourites } from "../utils/common";
 
 const HeartBtn = ({ id }) => {
   const [heartColor, setHeartColor] = useState("white");
@@ -28,6 +29,7 @@ const HeartBtn = ({ id }) => {
 
   const handleLike = () => {
     if (validateLogin()) {
+      mutate();
       setHeartColor((prev) => (prev === "#8ac243" ? "white" : "#8ac243"));
     }
   };
