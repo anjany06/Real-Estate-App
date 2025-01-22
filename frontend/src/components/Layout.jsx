@@ -6,8 +6,11 @@ import { useAuth0 } from "@auth0/auth0-react";
 import UserDetailContext from "../context/UserDetailContext";
 import { useMutation } from "react-query";
 import { createUser } from "../utils/api";
+import useFavourites from "../hooks/useFavourites";
 
 const Layout = () => {
+  useFavourites();
+
   const { isAuthenticated, user, getAccessTokenSilently } = useAuth0();
   const { setUserDetails } = useContext(UserDetailContext);
   const { mutate } = useMutation({
@@ -29,8 +32,6 @@ const Layout = () => {
           ...prev,
           token: res,
         }));
-
-
       } catch (error) {
         console.error(error);
       }
