@@ -16,6 +16,7 @@ import UserDetailContext from "../context/UserDetailContext";
 import { Button } from "@mantine/core";
 import { useMutation } from "react-query";
 import { toast } from "react-toastify";
+import HeartBtn from "../components/HeartBtn";
 
 const Property = () => {
   const [data, setData] = useState();
@@ -71,7 +72,7 @@ const Property = () => {
         />
         {/* LIKE BIN */}
         <div className="absolute top-8 right-8">
-          <FaHeart className="text-white text-xl" />
+          <HeartBtn />
         </div>
       </div>
       {/* CONTAINER */}
