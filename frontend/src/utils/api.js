@@ -137,7 +137,7 @@ export const getAllBookings = async (email, token) => {
   if (!token) return;
   try {
     const res = await api.post(
-      `user/allFav/`,
+      `user/allBookings/`,
       {
         email,
       },
@@ -147,9 +147,7 @@ export const getAllBookings = async (email, token) => {
         },
       }
     );
-
-    console.log(res.data["favResidenciesID"]);
-    return res.data["favResidenciesID"];
+    return res.data["bookedVisits"];
   } catch (error) {
     toast.error("Something went wrong while fetching your booking list");
     throw error;
