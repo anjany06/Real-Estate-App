@@ -35,7 +35,7 @@ const Navbar = ({ containerStyles }) => {
       <div onClick={handleAddPropertyClick} className={"py-1 cursor-pointer"}>
         Add Property
       </div>
-      <AddPropertyModel openend={modelOpened} setOpened={setModelOpened} />
+      <AddPropertyModel opened={modelOpened} setOpened={setModelOpened} />
     </nav>
   );
 };
