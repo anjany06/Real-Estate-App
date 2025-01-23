@@ -9,6 +9,7 @@ const Navbar = ({ containerStyles }) => {
   const handleAddPropertyClick = () => {
     if (validateLogin()) {
       setModelOpened(true);
+      console.log("Button clicked");
     }
   };
   return (
