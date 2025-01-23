@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import AddPropertyModel from "./AddPropertyModel";
+import useAuthCheck from "../hooks/useAuthCheck";
 
 const Navbar = ({ containerStyles }) => {
+  const [modelOpened, setModelOpened] = useState(false);
+  const { validateLogin } = useAuthCheck();
+  const handleAddPropertyClick = () => {
+    if (validateLogin()) {
+      setModelOpened(true);
+    }
+  };
   return (
     <nav className={`${containerStyles}`}>
       <NavLink
@@ -22,12 +31,10 @@ const Navbar = ({ containerStyles }) => {
       >
         Contact
       </NavLink>
-      <NavLink
-        to={"/add-property"}
-        className={({ isActive }) => (isActive ? "active-link py-1" : "py-1")}
-      >
+      <div onClick={handleAddPropertyClick} className={"py-1 cursor-pointer"}>
         Add Property
-      </NavLink>
+      </div>
+      <AddPropertyModel openend={modelOpened} setOpened={setModelOpened} />
     </nav>
   );
 };
