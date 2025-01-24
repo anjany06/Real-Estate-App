@@ -46,7 +46,12 @@ const AddPropertyModel = ({ opened, setOpened }) => {
               />
             </Stepper.Step>
             <Stepper.Step label="Second step" description="Verify email">
-              Step 2 content: Verify email
+              <UploadImage
+                prevStep={prevStep}
+                nextStep={nextStep}
+                propertyDetails={propertyDetails}
+                setPropertyDetails={setPropertyDetails}
+              />
             </Stepper.Step>
             <Stepper.Step label="Final step" description="Get full access">
               Step 3 content: Get full access
