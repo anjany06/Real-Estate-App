@@ -1,5 +1,6 @@
 import { Container, Modal, Stepper } from "@mantine/core";
 import React, { useState } from "react";
+import AddLocation from "./AddLocation";
 
 const AddPropertyModel = ({ opened, setOpened }) => {
   const [active, setActive] = useState(0);
@@ -16,7 +17,15 @@ const AddPropertyModel = ({ opened, setOpened }) => {
       bathrooms: 0,
       parking: 0,
     },
+    userEmail: user?.email,
   });
+
+  const nextStep = () => {
+    setActive((current) => (current < 4 ? current + 1 : current));
+  };
+  const prevStep = () => {
+    setActive((current) => (current > 0 ? current - 1 : current));
+  };
   return (
     <Modal
       opened={opened}
