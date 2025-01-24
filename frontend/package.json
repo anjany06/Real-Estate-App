@@ -29,7 +29,8 @@
     "react-router-dom": "^7.1.1",
     "react-spinners": "^0.15.0",
     "react-toastify": "^11.0.3",
-    "swiper": "^11.2.1"
+    "swiper": "^11.2.1",
+    "world-countries": "^5.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
