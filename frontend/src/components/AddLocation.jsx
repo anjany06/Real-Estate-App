@@ -1,5 +1,6 @@
 import React from "react";
 import {} from "@mantine/form";
+import { validateString } from "../utils/api";
 
 const AddLocation = ({ propertyDetails, setPropertyDetails, nextStep }) => {
   const form = useForm({
@@ -16,7 +17,7 @@ const AddLocation = ({ propertyDetails, setPropertyDetails, nextStep }) => {
   });
 
   const { country, city, address } = form.values;
-  
+
   return <div>AddLocation</div>;
 };
 
