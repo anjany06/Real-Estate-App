@@ -18,29 +18,39 @@ const UploadImage = ({
   };
 
   useEffect(() => {
-    cloudinaryRef.current = window.cloundinary;
-    widgetRef.current = cloudinaryRef.current.createUploadWidget(
-      {
-        cloudName: "dk6rzbetn",
-        uploadPreset: "zenHomes",
-        maxFiles: 1,
-      },
-      (err, result) => {
-        if (result.event === "success") {
-          setImageURL(result.info.secure_url);
+    if (window.cloudinary) {
+      cloudinaryRef.current = window.cloudinary;
+      widgetRef.current = cloudinaryRef.current.createUploadWidget(
+        {
+          cloudName: "dk6rzbetn",
+          uploadPreset: "zenHomes",
+          maxFiles: 1,
+        },
+        (err, result) => {
+          if (result.event === "success") {
+            setImageURL(result.info.secure_url);
+          }
         }
-      }
-    );
-  });
+      );
+    } else {
+      console.error("Window object not available");
+    }
+  }, []);
   return (
     <div className="mt-12 flexCenter flex-col">
       {!imageURL ? (
-        <div className="flexCenter flex-col w-3/4 h-[21rem] border-dashed border-2 cursor-pointer">
+        <div
+          onClick={() => widgetRef.current?.open()}
+          className="flexCenter flex-col w-3/4 h-[21rem] border-dashed border-2 cursor-pointer"
+        >
           <MdOutlineCloudUpload size={44} color="grey" />
           <span>Uplaod Image</span>
         </div>
       ) : (
-        <div className="w-3/4 h-[22rem] rounded-xl overflow-hidden cursor-pointer">
+        <div
+          onClick={() => widgetRef.current?.open()}
+          className="w-3/4 h-[22rem] rounded-xl overflow-hidden cursor-pointer"
+        >
           <img
             src={imageURL}
             alt="UploadedImg"

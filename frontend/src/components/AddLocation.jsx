@@ -45,7 +45,7 @@ const AddLocation = ({ propertyDetails, setPropertyDetails, nextStep }) => {
             <Select
               w={"100%"}
               withAsterisk
-              Label="Country"
+              label="Country"
               searchable
               data={getAll()}
               {...form.getInputProps("country", { type: "input" })}
