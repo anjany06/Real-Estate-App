@@ -1,9 +1,11 @@
 import { Container, Modal, Stepper } from "@mantine/core";
 import React, { useState } from "react";
 import AddLocation from "./AddLocation";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const AddPropertyModel = ({ opened, setOpened }) => {
   const [active, setActive] = useState(0);
+  const { user } = useAuth0();
   const [propertyDetails, setPropertyDetails] = useState({
     title: "",
     description: "",

@@ -1,5 +1,5 @@
 import React from "react";
-import {} from "@mantine/form";
+import { useForm } from "@mantine/form";
 import { validateString } from "../utils/api";
 import { Select } from "@mantine/core";
 import useCountries from "../hooks/useCountries";
@@ -34,6 +34,7 @@ const AddLocation = ({ propertyDetails, setPropertyDetails, nextStep }) => {
               Label="Country"
               searchable
               data={getAll()}
+              {...form.getInputProps("country", { type: "input" })}
             />
           </div>
         </div>
