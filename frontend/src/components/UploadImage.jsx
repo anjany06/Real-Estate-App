@@ -1,5 +1,5 @@
 import { Button, Group } from "@mantine/core";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { MdOutlineCloudUpload } from "react-icons/md";
 
 const UploadImage = ({
@@ -9,8 +9,29 @@ const UploadImage = ({
   setPropertyDetails,
 }) => {
   const [imageURL, setImageURL] = useState(propertyDetails.image);
+  const cloudinaryRef = useRef();
+  const widgetRef = useRef();
 
-  const handleNext = () => {};
+  const handleNext = () => {
+    setPropertyDetails((prev) => ({ ...prev, image: imageURL }));
+    nextStep();
+  };
+
+  useEffect(() => {
+    cloudinaryRef.current = window.cloundinary;
+    widgetRef.current = cloudinaryRef.current.createUploadWidget(
+      {
+        cloudName: "dk6rzbetn",
+        uploadPreset: "zenHomes",
+        maxFiles: 1,
+      },
+      (err, result) => {
+        if (result.event === "success") {
+          setImageURL(result.info.secure_url);
+        }
+      }
+    );
+  });
   return (
     <div className="mt-12 flexCenter flex-col">
       {!imageURL ? (
