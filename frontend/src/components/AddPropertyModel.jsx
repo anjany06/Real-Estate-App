@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import AddLocation from "./AddLocation";
 import { useAuth0 } from "@auth0/auth0-react";
 import UploadImage from "./UploadImage";
+import BasicDetails from "./BasicDetails";
 
 const AddPropertyModel = ({ opened, setOpened }) => {
   const [active, setActive] = useState(0);
@@ -55,7 +56,12 @@ const AddPropertyModel = ({ opened, setOpened }) => {
               />
             </Stepper.Step>
             <Stepper.Step label="Basics" description="Details">
-              Step 3 content: Get full access
+              <BasicDetails
+                prevStep={prevStep}
+                nextStep={nextStep}
+                propertyDetails={propertyDetails}
+                setPropertyDetails={setPropertyDetails}
+              />
             </Stepper.Step>
             <Stepper.Completed>
               Completed, click back button to get to previous step
