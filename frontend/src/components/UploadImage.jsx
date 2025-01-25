@@ -44,7 +44,7 @@ const UploadImage = ({
           className="flexCenter flex-col w-3/4 h-[21rem] border-dashed border-2 cursor-pointer"
         >
           <MdOutlineCloudUpload size={44} color="grey" />
-          <span>Uplaod Image</span>
+          <span>Upload Image</span>
         </div>
       ) : (
         <div

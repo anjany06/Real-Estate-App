@@ -39,14 +39,14 @@ const AddPropertyModel = ({ opened, setOpened }) => {
       <Container h={"34rem"} w={"100%"}>
         <>
           <Stepper active={active} onStepClick={setActive}>
-            <Stepper.Step label="First step" description="Create an account">
+            <Stepper.Step label="Location" description="Address">
               <AddLocation
                 nextStep={nextStep}
                 propertyDetails={propertyDetails}
                 setPropertyDetails={setPropertyDetails}
               />
             </Stepper.Step>
-            <Stepper.Step label="Second step" description="Verify email">
+            <Stepper.Step label="Image" description="Upload Image">
               <UploadImage
                 prevStep={prevStep}
                 nextStep={nextStep}
@@ -54,7 +54,7 @@ const AddPropertyModel = ({ opened, setOpened }) => {
                 setPropertyDetails={setPropertyDetails}
               />
             </Stepper.Step>
-            <Stepper.Step label="Final step" description="Get full access">
+            <Stepper.Step label="Basics" description="Details">
               Step 3 content: Get full access
             </Stepper.Step>
             <Stepper.Completed>
