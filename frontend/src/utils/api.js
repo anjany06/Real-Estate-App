@@ -159,3 +159,24 @@ export const validateString = (value) => {
     ? "Must have atleast 3 characters"
     : null;
 };
+
+export const createResidency = async (data, token, userEmail) => {
+  //Ensure userEmail is included in the data object
+  const requestData = { ...data, userEmail };
+  console.log(requestData); //lOad the updated data object
+  try {
+    const res = await api.post(
+      `residency/create`,
+      requestData, //pass the updated data object as the request body
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return;
+  } catch (error) {
+    toast.error("Something went wrong while creating residency");
+    throw error;
+  }
+};

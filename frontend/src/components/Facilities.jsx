@@ -4,9 +4,9 @@ import { useForm } from "@mantine/form";
 import React, { useContext } from "react";
 import { useMutation } from "react-query";
 import { toast } from "react-toastify";
-import { createResidency } from "../utils/api";
 import useProperties from "../hooks/useProperties";
 import UserDetailContext from "../context/UserDetailContext";
+import { createResidency } from "../utils/api";
 
 const Facilities = ({
   prevStep,
