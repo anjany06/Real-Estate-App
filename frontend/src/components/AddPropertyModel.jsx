@@ -4,6 +4,7 @@ import AddLocation from "./AddLocation";
 import { useAuth0 } from "@auth0/auth0-react";
 import UploadImage from "./UploadImage";
 import BasicDetails from "./BasicDetails";
+import Facilities from "./Facilities";
 
 const AddPropertyModel = ({ opened, setOpened }) => {
   const [active, setActive] = useState(0);
@@ -61,6 +62,15 @@ const AddPropertyModel = ({ opened, setOpened }) => {
                 nextStep={nextStep}
                 propertyDetails={propertyDetails}
                 setPropertyDetails={setPropertyDetails}
+              />
+            </Stepper.Step>
+            <Stepper.Step label="Facilities" description="Details">
+              <Facilities
+                prevStep={prevStep}
+                propertyDetails={propertyDetails}
+                setPropertyDetails={setPropertyDetails}
+                setOpened={setOpened}
+                setActiveStep={setActive}
               />
             </Stepper.Step>
             <Stepper.Completed>
