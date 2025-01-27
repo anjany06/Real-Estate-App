@@ -5,7 +5,7 @@ import { getAllProperties } from "../utils/api";
 import { PuffLoader } from "react-spinners";
 import UserDetailContext from "../context/UserDetailContext";
 
-const Bookings = () => {
+const Favourites = () => {
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState("");
   const [filteredProperties, setFilteredProperties] = useState([]);
@@ -79,4 +79,4 @@ const Bookings = () => {
   );
 };
 
-export default Bookings;
+export default Favourites;

@@ -73,4 +73,4 @@ const Listing = () => {
   );
 };
 
-export default Bookings;
+export default Listing;
