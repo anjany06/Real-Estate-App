@@ -51,12 +51,19 @@ const Bookings = () => {
           <Searchbar filter={filter} setFilter={setFilter} />
           {/* CONTAINER */}
           {data.length > 0 ? (
-            <div className="grid gap-6 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mt-10">
-              {filteredProperties &&
-                filteredProperties.map((property) => (
+            filteredProperties.length > 0 ? (
+              <div className="grid gap-6 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mt-10">
+                {filteredProperties.map((property) => (
                   <Item key={property.id} property={property} />
                 ))}
-            </div>
+              </div>
+            ) : (
+              <div className="flex justify-center mt-10">
+                <p className="text-lg text-gray-500">
+                  Start booking properties to see them here.
+                </p>
+              </div>
+            )
           ) : (
             <div className="h-4 flexCenter">
               <PuffLoader
