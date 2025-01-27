@@ -16,15 +16,15 @@ const useBookings = () => {
       setUserDetails((prev) => ({ ...prev, bookings: data }));
     },
     enabled: user !== undefined,
-    staleTime: 30000,
-    keepPreviousData: true,
+    // staleTime: 30000,
+    // keepPreviousData: true,
   });
 
   queryRef.current = refetch;
   useEffect(() => {
     queryRef.current && queryRef.current();
   }, [userDetails?.token]);
-  
+
   return { data, isError, isLoading, refetch };
 };
 
