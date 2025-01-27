@@ -17,12 +17,14 @@ const useBookings = () => {
     },
     enabled: user !== undefined,
     staleTime: 30000,
+    keepPreviousData: true,
   });
 
   queryRef.current = refetch;
   useEffect(() => {
     queryRef.current && queryRef.current();
   }, [userDetails?.token]);
+  
   return { data, isError, isLoading, refetch };
 };
 

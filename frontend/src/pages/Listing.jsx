@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Searchbar from "../components/Searchbar";
-import axios from "axios";
 import Item from "../components/Item";
 import { getAllProperties } from "../utils/api";
 import { PuffLoader } from "react-spinners";
