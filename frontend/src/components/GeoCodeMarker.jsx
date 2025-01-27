@@ -27,8 +27,6 @@ const GeoCodeMarker = ({ address }) => {
           const lat = data[0].lat;
           const lon = data[0].lon;
           setPosition([lat, lon]);
-        } else {
-          console.log("No geocoding results found");
         }
       } catch (error) {
         console.error(error);

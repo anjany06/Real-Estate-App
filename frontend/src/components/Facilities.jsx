@@ -97,7 +97,7 @@ const Facilities = ({
   });
 
   return (
-    <Box maw={"30%"} mx="auto" my={"sm"}>
+    <Box maw={"50%"} mx="auto" my={"sm"}>
       <form
         onSubmit={(e) => {
           e.preventDefault();

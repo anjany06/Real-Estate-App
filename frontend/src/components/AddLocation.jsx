@@ -37,7 +37,7 @@ const AddLocation = ({ propertyDetails, setPropertyDetails, nextStep }) => {
         handleSubmit();
       }}
     >
-      <div className="flexCenter ">
+      <div className="flexCenter flex-col sm:flex-row">
         {/* LEFT SIDE */}
         <div className="flexCenter flex-1">
           {/* INPUTS */}
@@ -65,11 +65,11 @@ const AddLocation = ({ propertyDetails, setPropertyDetails, nextStep }) => {
           </div>
         </div>
         {/* RIGHT SIDE */}
-        <div className="flex-1">
+        <div className="flex sm:flex-1 w-full">
           <Map address={address} city={city} country={country} />
         </div>
       </div>
-      <Group justify="center" mt={"xl"}>
+      <Group justify="center" mt={"xl"} pb={"lg"}>
         <Button type="submit">Next Step</Button>
       </Group>
     </form>
