@@ -3,9 +3,8 @@ import dayjs from "dayjs";
 import { toast } from "react-toastify";
 
 export const api = axios.create({
-  baseURL: "https://zenhomes-backend-lyart.vercel.app/api",
+  baseURL: import.meta.env.VITE_BACKEND_URL,
 });
-
 export const getAllProperties = async () => {
   try {
     const response = await api.get("/residency/allresd", {

@@ -22,7 +22,7 @@ const UploadImage = ({
       cloudinaryRef.current = window.cloudinary;
       widgetRef.current = cloudinaryRef.current.createUploadWidget(
         {
-          cloudName: "dk6rzbetn",
+          cloudName: import.meta.env.VITE_CLOUDNAME,
           uploadPreset: "zenHomes",
           maxFiles: 1,
         },
