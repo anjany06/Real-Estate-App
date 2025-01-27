@@ -12,7 +12,6 @@ const Bookings = () => {
   const {
     userDetails: { bookings },
   } = useContext(UserDetailContext);
-  console.log(bookings);
 
   useEffect(() => {
     const fetchData = async () => {

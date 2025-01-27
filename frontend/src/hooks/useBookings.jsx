@@ -14,10 +14,11 @@ const useBookings = () => {
     queryFn: () => getAllBookings(user?.email, userDetails.token),
     onSuccess: (data) => {
       setUserDetails((prev) => ({ ...prev, bookings: data }));
+      //bug of data fails on reloading
     },
     enabled: user !== undefined,
-    // staleTime: 30000,
-    // keepPreviousData: true,
+    staleTime: 30000,
+    keepPreviousData: true,
   });
 
   queryRef.current = refetch;
