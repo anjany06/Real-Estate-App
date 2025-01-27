@@ -1,13 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Searchbar from "../components/Searchbar";
 import Item from "../components/Item";
 import { getAllProperties } from "../utils/api";
 import { PuffLoader } from "react-spinners";
+import UserDetailContext from "../context/UserDetailContext";
 
-const Favourites = () => {
+const Bookings = () => {
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState("");
   const [filteredProperties, setFilteredProperties] = useState([]);
+  const {
+    userDetails: { favourites },
+  } = useContext(UserDetailContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,18 +27,20 @@ const Favourites = () => {
 
   useEffect(() => {
     if (data) {
-      const filteredData = data.filter(
-        (property) =>
-          (property.title &&
-            property.title.toLowerCase().includes(filter.toLowerCase())) ||
-          (property.city &&
-            property.city.toLowerCase().includes(filter.toLowerCase())) ||
-          (property.country &&
-            property.country.toLowerCase().includes(filter.toLowerCase()))
-      );
+      const filteredData = data
+        .filter((property) => favourites.includes(property.id))
+        .filter(
+          (property) =>
+            (property.title &&
+              property.title.toLowerCase().includes(filter.toLowerCase())) ||
+            (property.city &&
+              property.city.toLowerCase().includes(filter.toLowerCase())) ||
+            (property.country &&
+              property.country.toLowerCase().includes(filter.toLowerCase()))
+        );
       setFilteredProperties(filteredData);
     }
-  }, [data, filter]);
+  }, [data, filter, favourites]);
 
   return (
     <main className="my-24">
@@ -66,4 +72,4 @@ const Favourites = () => {
   );
 };
 
-export default Favourites;
+export default Bookings;
