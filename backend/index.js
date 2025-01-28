@@ -18,6 +18,10 @@ app.use(cors());
 app.use("/api/user", userRoute);
 app.use("/api/residency", residencyRoute);
 
+app.post("/api/google-sign-up-login", googleAuth, (req, res) => {
+  res.send({ message: "User signed up/logged in successfully" });
+});
+
 app.get("/", (req, res) => {
   res.send("API Working");
 });

@@ -1,10 +1,12 @@
 import asyncHandler from "express-async-handler";
 import { prisma } from "../config/prismaConfig.js";
 
-//CONTROLLER FUNCTION FOR CREATING A USER
-export const createUser = asyncHandler(async (req, res) => {
-  console.log("creating a user");
+// userController.js
+import asyncHandler from "express-async-handler";
+import { prisma } from "../config/prismaConfig.js";
 
+// CONTROLLER FUNCTION FOR CREATING A USER
+export const createUser = asyncHandler(async (req, res) => {
   let { email } = req.body;
   const userExists = await prisma.user.findUnique({ where: { email: email } });
   if (!userExists) {
@@ -14,6 +16,24 @@ export const createUser = asyncHandler(async (req, res) => {
       user: user,
     });
   } else res.status(201).send({ message: "User already registered" });
+});
+
+// CONTROLLER FUNCTION FOR GOOGLE SIGN UP/LOGIN
+export const googleSignUpLogin = asyncHandler(async (req, res) => {
+  const { email } = req.body;
+  const userExists = await prisma.user.findUnique({ where: { email: email } });
+  if (!userExists) {
+    const user = await prisma.user.create({ data: req.body });
+    res.send({
+      message: "User registered successfully",
+      user: user,
+    });
+  } else {
+    res.send({
+      message: "User already exists",
+      user: userExists,
+    });
+  }
 });
 
 //CONTROLLER FUNCTION FOR BOOK A RESIDENCY VIST
