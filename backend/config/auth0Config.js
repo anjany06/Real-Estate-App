@@ -1,4 +1,4 @@
-const jwtCheck = require("express-oauth2-jwt-bearer");
+import jwtCheck from "express-oauth2-jwt-bearer";
 
 export const jwtConfig = {
   audience: "http://localhost:4000",
