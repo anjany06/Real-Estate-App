@@ -34,6 +34,7 @@ const Layout = () => {
           ...prev,
           token: res,
         }));
+        mutate(res);
       } catch (error) {
         console.error(error);
       }
