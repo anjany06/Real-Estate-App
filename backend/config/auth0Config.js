@@ -19,3 +19,4 @@ export const googleAuth = async (req, res, next) => {
     res.status(401).send({ message: "Invalid token" });
   }
 };
+export default jwtCheck;
