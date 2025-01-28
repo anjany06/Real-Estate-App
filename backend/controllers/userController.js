@@ -1,10 +1,6 @@
 import asyncHandler from "express-async-handler";
 import { prisma } from "../config/prismaConfig.js";
 
-// userController.js
-import asyncHandler from "express-async-handler";
-import { prisma } from "../config/prismaConfig.js";
-
 // CONTROLLER FUNCTION FOR CREATING A USER
 export const createUser = asyncHandler(async (req, res) => {
   let { email } = req.body;
