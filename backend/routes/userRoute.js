@@ -11,7 +11,7 @@ import { verifyToken } from "../config/auth0Config.js";
 
 const router = express.Router();
 
-router.post("/register", verifyToken, createUser);
+router.post("/register", createUser);
 router.post("/bookVisit/:id", bookVisit);
 router.post("/allBookings", getAllBookings);
 router.post("/removeBooking/:id", cancelBooking);

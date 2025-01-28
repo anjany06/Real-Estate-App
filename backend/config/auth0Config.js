@@ -1,4 +1,4 @@
-import jwtCheck from "express-oauth2-jwt-bearer";
+import jwt from "jsonwebtoken";
 
 export const jwtConfig = {
   audience: "http://localhost:4000",
@@ -7,17 +7,17 @@ export const jwtConfig = {
 };
 
 export const verifyToken = (req, res, next) => {
-  jwtCheck(jwtConfig)(req, res, (err) => {
+  const token = req.headers.authorization;
+  if (!token) {
+    return res.status(401).send({ message: "Unauthorized" });
+  }
+
+  jwt.verify(token, jwtConfig.issuerBaseURL, (err, decoded) => {
     if (err) {
       return res.status(401).send({ message: "Invalid token" });
     }
-    const token = req.auth;
-    const payload = token.payload;
-    // Verify the payload claims
-    if (!payload.sub || !payload.email) {
-      return res.status(401).send({ message: "Invalid token claims" });
-    }
-    // ...
+
+    req.user = decoded;
     next();
   });
 };

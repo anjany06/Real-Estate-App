@@ -11,7 +11,7 @@ createRoot(document.getElementById("root")).render(
     domain="dev-uwmuixrpr6yb67gz.us.auth0.com"
     clientId="TWnkFTDd9To1SnDuQjOHfieY3Xj9nMUp"
     authorizationParams={{
-      redirect_uri: "https://zenhomes-real-estate.vercel.app",
+      redirect_uri: "http://localhost:5173",
     }}
     audience="http://localhost:4000"
     scope="openid profile email"
