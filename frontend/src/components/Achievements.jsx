@@ -42,9 +42,9 @@ const Achievements = () => {
         <div className="flex-[6] flex justify-center flex-col bg-[#008274] text-white px-6 lg:px-12 py-16">
           <h2 className="h2">Our Achievements</h2>
           <p className="py-5 text-white max-w-[47rem] ">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae
-            distinctio ullam vero voluptatem et nulla. Lorem ipsum dolor sit
-            amet consectetur adipisicing elit. Odio ipsam quae laborum nemo.
+            Thousands of Homes Sold, Exceptional Customer Satisfaction,
+            Unparalleled Expertise Transforming Lives, One Home at a Time with
+            zenHomes
           </p>
           {/* STATISTICS CONTAINER */}
           <div className="flex flex-wrap gap-4">
@@ -75,8 +75,8 @@ const Achievements = () => {
               <LiaCertificateSolid className="text-5xl text-black" />
             </span>
             <span className="relative bottom-3">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Repellendus quisquam dolorum earum at vel debitis. Ducimus?
+              Pioneering Homeownership, Delivering Exceptional Results Your
+              Home, Our Priority, Always with zenHomes
             </span>
           </div>
         </div>

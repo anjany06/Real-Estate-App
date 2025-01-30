@@ -13,8 +13,8 @@ const Hero = () => {
           Discover Your Dream Property Today
         </h1>
         <p className="my-5 max-w-[33rem]">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint rem
-          architecto quo maxime.
+          ZenHomes, Your one-stop real estate app to discover, explore, and own
+          your dream home.
         </p>
         {/* BUTTON */}
         <div className="inline-flex items-center justify-center gap-4 bg-white rounded-ring-1 ring-slate-900/5 mt-4">

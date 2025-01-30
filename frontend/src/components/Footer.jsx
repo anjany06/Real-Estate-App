@@ -10,9 +10,7 @@ const Footer = () => {
       <div className="max-padd-container flex items-start justify-between flex-col lg:flex-row gap-8 py-6 mb-7 bg-gradient-to-r from-primary via-white to-white">
         <div>
           <h4 className="h4">We are always here to help</h4>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae.
-          </p>
+          <p>zenHomes: Simplifying your home search, one property at a time.</p>
         </div>
         <div className="flexStart flex-wrap gap-8">
           <div className="flexCenter gap-x-6">
@@ -47,10 +45,7 @@ const Footer = () => {
               <img src={logo} alt="" className="h-16" />
             </Link>
           </div>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas
-            earum reprehenderit possimus!
-          </p>
+          <p>Find Your Home Today with zenHomes</p>
         </div>
         <div className="flexStart gap-7 xl:gap-x-36 flex-wrap">
           <ul>
