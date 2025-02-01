@@ -1,6 +1,7 @@
 import asyncHandler from "express-async-handler";
 import { prisma } from "../config/prismaConfig.js";
 
+//CONTROLLER FUNCTION FOR CREATING A RESIDENCY
 export const createResidency = asyncHandler(async (req, res) => {
   const {
     title,
@@ -13,8 +14,6 @@ export const createResidency = asyncHandler(async (req, res) => {
     image,
     userEmail,
   } = req.body.data || req.body;
-
-  console.log(req.body.data);
   try {
     const residency = await prisma.residency.create({
       data: {

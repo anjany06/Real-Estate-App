@@ -7,7 +7,6 @@ import {
   getAllFav,
   toFav,
 } from "../controllers/userController.js";
-import { verifyToken } from "../config/auth0Config.js";
 
 const router = express.Router();
 
