@@ -25,7 +25,7 @@ const Layout = () => {
       try {
         const res = await getAccessTokenSilently({
           authorizationParams: {
-            audience: "http://localhost:4000",
+            audience: "https://zenhomes-backend-lyart.vercel.app",
             scope: "openid profile email",
           },
         });
