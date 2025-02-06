@@ -13,7 +13,7 @@ createRoot(document.getElementById("root")).render(
     authorizationParams={{
       redirect_uri: "https://zenhomes-real-estate.vercel.app",
     }}
-    audience="https://zenhomes-backend-lyart.vercel.app"
+    audience="http://localhost:4000"
     scope="openid profile email"
   >
     <MantineProvider>
