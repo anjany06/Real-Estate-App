@@ -13,6 +13,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ErrorBoundary } from "react-error-boundary";
 import UserDetailContext from "./context/UserDetailContext";
+import { PuffLoader } from "react-spinners";
 
 const App = () => {
   const queryClient = new QueryClient();
@@ -30,7 +31,19 @@ const App = () => {
       >
         <QueryClientProvider client={queryClient}>
           <BrowserRouter>
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense
+              fallback={
+                <div className="h-4 flexCenter">
+                  <PuffLoader
+                    height="80"
+                    width="80"
+                    radius={1}
+                    color="#555"
+                    aria-label="puff-loading"
+                  />
+                </div>
+              }
+            >
               <Routes>
                 <Route element={<Layout />}>
                   <Route path="/" element={<Home />} />

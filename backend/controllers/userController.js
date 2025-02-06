@@ -85,8 +85,8 @@ export const cancelBooking = asyncHandler(async (req, res) => {
     throw new Error(error.message);
   }
 });
-//CONTROLLER FUNCTION FOR ADDING A RESIDENCY TO THE FAVORITES OF A USER
 
+//CONTROLLER FUNCTION FOR ADDING A RESIDENCY TO THE FAVORITES OF A USER
 export const toFav = asyncHandler(async (req, res) => {
   const { email } = req.body;
   const { rid } = req.params;
