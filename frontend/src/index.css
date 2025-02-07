@@ -16,6 +16,9 @@
   width: 10px;
 }
 
+.mantine-Stepper-step {
+  pointer-events: none;
+}
 /* Track */
 ::-webkit-scrollbar-track {
   background: white;

@@ -44,7 +44,7 @@ const AddPropertyModel = ({ opened, setOpened }) => {
       closeOnClickOutside
       size={"90rem"}
     >
-      <Container h={"34rem"} w={"100%"}>
+      <Container h={"34rem"} w={"100%"} sx={{ pointerEvents: "none" }}>
         <>
           <Stepper
             active={active}
@@ -84,9 +84,6 @@ const AddPropertyModel = ({ opened, setOpened }) => {
                 setActiveStep={setActive}
               />
             </Stepper.Step>
-            <Stepper.Completed>
-              Completed, click back button to get to previous step
-            </Stepper.Completed>
           </Stepper>
         </>
       </Container>
