@@ -5,7 +5,8 @@ import { Button, Group, Select, TextInput } from "@mantine/core";
 import useCountries from "../hooks/useCountries";
 import Map from "./Map";
 
-const AddLocation = ({ propertyDetails, setPropertyDetails, nextStep }) => {
+const AddLocation = ({ propertyDetails, setPropertyDetails, nextStep, setIsLocationCompleted }) => {
+
   const { getAll } = useCountries();
   const form = useForm({
     initialValues: {
@@ -26,7 +27,9 @@ const AddLocation = ({ propertyDetails, setPropertyDetails, nextStep }) => {
     const { hasErrors } = form.validate();
     if (!hasErrors) {
       setPropertyDetails((prev) => ({ ...prev, country, city, address }));
+      setIsLocationCompleted(true);
       nextStep();
+
     }
   };
 

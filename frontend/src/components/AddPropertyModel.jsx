@@ -25,8 +25,15 @@ const AddPropertyModel = ({ opened, setOpened }) => {
     userEmail: user?.email,
   });
 
-  const nextStep = () => {
+const [isLocationCompleted, setIsLocationCompleted] = useState(false);
+
+const nextStep = () => {
+    if (active === 0 && !isLocationCompleted) {
+        // Optionally, you can show a message to the user here
+        return;
+    }
     setActive((current) => (current < 4 ? current + 1 : current));
+
   };
   const prevStep = () => {
     setActive((current) => (current > 0 ? current - 1 : current));
@@ -43,6 +50,8 @@ const AddPropertyModel = ({ opened, setOpened }) => {
           <Stepper active={active} onStepClick={setActive}>
             <Stepper.Step label="Location" description="Address">
               <AddLocation
+                setIsLocationCompleted={setIsLocationCompleted}
+
                 nextStep={nextStep}
                 propertyDetails={propertyDetails}
                 setPropertyDetails={setPropertyDetails}
