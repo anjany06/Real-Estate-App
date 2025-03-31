@@ -1,6 +1,6 @@
 # ZenHomes – Real Estate Application
 
-![ZenHomes](src/assets/testimonials/front.png)
+![ZenHomes](frontend/src/assets/front.png)
 
 ## 🌟 Overview
 
