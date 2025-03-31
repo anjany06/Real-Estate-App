@@ -12,7 +12,6 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Autoplay } from "swiper/modules";
-import { PROPERTIES } from "../constant/data";
 
 import { getAllProperties } from "../utils/api";
 

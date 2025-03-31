@@ -1,32 +1,35 @@
-ZenHomes is a real estate application that allows users to browse, book, and manage properties. The application provides a seamless user experience, enabling users to easily find and visit their desired properties.
+# ZenHomes – Real Estate Application
 
-Features
-User Authentication: Users can log in and register using Auth0, ensuring secure and efficient authentication.
-Property Browsing: Users can browse through a vast collection of properties.
-Booking Management: Users can book visits to properties, manage their bookings, and cancel them when needed.
-Favorites: Users can add properties to their favorites list for easy access and comparison.
-Add property: Users can add properties.
+![ZenHomes](public/front.png)
 
+## 🌟 Overview
+🚀 **ZenHomes** is a real estate application that enables users to browse, book, and manage properties seamlessly. The platform provides a user-friendly experience, allowing users to explore a variety of properties, book visits, and save their favorite listings, all in one place.
 
-Technologies Used
+## 🌟 Features
+* ✅ **User Authentication** – Secure login and registration using **Auth0**
+* ✅ **Property Browsing** – Browse a vast collection of properties available for booking
+* ✅ **Booking Management** – Easily book, manage, and cancel property visits
+* ✅ **Favorites** – Add properties to your favorites list for easy access and comparison
+* ✅ **Add Property** – Users can add their own properties to the platform for others to explore
+* ✅ **Dynamic Map Locations** – Interactive maps powered by **Mapbox** for property locations
 
-Frontend:
-React: A JavaScript library for building user interfaces.
-Tailwind CSS: A utility-first CSS framework for styling and layout.
-Mantine Core and dates: A React component library for building complex UI components.
-React Query: A library for managing data fetching and caching in React applications.
+## 🔗 Live Demo
+Check out **ZenHomes** in action: **[Live Link](https://zenhomes-demo.vercel.app)** 🚀
 
-Backend:
-Node.js: A JavaScript runtime environment for building server-side applications.
-Express.js: A popular Node.js framework for building web applications.
-MongoDB: A NoSQL database for storing and retrieving data.
-Prisma ORM: An Object-Relational Mapping tool for interacting with the database.
+## 💻 Tech Stack
+| Category         | Technology                                   |
+|------------------|----------------------------------------------|
+| **Frontend**     | React, Tailwind CSS, Mantine Core & Dates, React Query |
+| **Backend**      | Node.js, Express.js, Prisma ORM             |
+| **Database**     | MongoDB                                      |
+| **Authentication** | Auth0                                       |
+| **Image Storage** | Cloudinary                                  |
+| **Geolocation**  | Mapbox                                       |
+| **Deployment**   | Vercel                                       |
 
-Authentication:
-Auth0: A platform for authentication, authorization, and identity management.
-Image Storage:
+## 📥 Installation
+### Clone the repository:
+```bash
+git clone https://github.com/anjany06/zenHomes.git
+cd zenHomes
 
-Cloudinary: A cloud-based image and video management platform.
-Geolocation:
-
-Mapbox: A geolocation platform for displaying dynamic maps and locations.

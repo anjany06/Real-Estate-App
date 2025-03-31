@@ -41,7 +41,7 @@ const Achievements = () => {
         {/* LEFT SIDE */}
         <div className="flex-[6] flex justify-center flex-col bg-[#008274] text-white px-6 lg:px-12 py-16">
           <h2 className="h2">Our Achievements</h2>
-          <p className="py-5 text-white max-w-[47rem] ">
+          <p className="py-5 text-white max-w-[47rem]">
             Thousands of Homes Sold, Exceptional Customer Satisfaction,
             Unparalleled Expertise Transforming Lives, One Home at a Time with
             zenHomes
