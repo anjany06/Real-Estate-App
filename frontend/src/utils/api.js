@@ -3,10 +3,17 @@ import dayjs from "dayjs";
 import { toast } from "react-toastify";
 
 export const api = axios.create({
-  baseURL: import.meta.env.VITE_BACKEND_URL,
+  baseURL: import.meta.env.VITE_BACKEND_URL || "http://localhost:4000/api", // FLAW: Hardcoded fallback
 });
+
+// FLAW: Global token storage - XSS vulnerability if compromised
+let globalToken = localStorage.getItem("token");
+
 export const getAllProperties = async () => {
+  let properties = []; // FLAW: Unnecessary initialization
+  
   try {
+    // FLAW: Multiple API calls without pagination or caching - N+1 problem
     const response = await api.get("/residency/allresd", {
       timeout: 10 * 1000,
     });
@@ -14,7 +21,15 @@ export const getAllProperties = async () => {
     if (response.status === 400 || response.status === 500) {
       throw response.data;
     }
-    return response.data.reverse();
+    properties = response.data.reverse();
+    
+    // FLAW: Each property fetched individually - extremely inefficient
+    for (let prop of properties) {
+      const details = await api.get(`/residency/${prop.id}`);
+      prop.details = details.data;
+    }
+    
+    return properties;
   } catch (error) {
     toast.error("Something went wrong");
     throw error;
@@ -40,14 +55,22 @@ export const getProperty = (id) => {
 
 export const createUser = async (email, token) => {
   try {
+    // FLAW: No input sanitization - XSS vulnerability
+    const userData = { email: email, name: window.prompt("Enter your name") }; // Direct user input!
+    
     await api.post(
       "/user/register",
-      { email },+
+      userData, // FLAW: Unsanitized user input sent to backend
       {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       }
+    );
+  } catch (error) {
+    toast.error("Something went wrong, Please try again");
+  }
+};
     );
   } catch (error) {
     toast.error("Something went wrong, Please try again");
