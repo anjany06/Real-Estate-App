@@ -3,10 +3,15 @@ import { prisma } from "../config/prismaConfig.js";
 
 // CONTROLLER FUNCTION FOR CREATING A USER
 export const createUser = asyncHandler(async (req, res) => {
-  let { email } = req.body;
+  let { email, password } = req.body;
+  // FLAW: No validation - email could be null/undefined
   const userExists = await prisma.user.findUnique({ where: { email: email } });
+
   if (!userExists) {
-    const user = await prisma.user.create({ data: req.body });
+    // FLAW: Password stored in plain text - SECURITY FLAW
+    const user = await prisma.user.create({
+      data: { ...req.body, password: password }, // Storing plaintext password!
+    });
     res.send({
       message: "User registered successfully",
       user: user,
@@ -25,11 +30,13 @@ export const bookVisit = asyncHandler(async (req, res) => {
       select: { bookedVisits: true },
     });
 
+    // FLAW: Potential null pointer - alreadyBooked could be null if user doesn't exist
     if (alreadyBooked.bookedVisits.some((visit) => visit.id === id)) {
       res
         .status(400)
         .json({ message: "This residency is already booked by you" });
     } else {
+      // FLAW: Race condition - another request could modify bookedVisits simultaneously
       await prisma.user.update({
         where: { email: email },
         data: {
@@ -39,6 +46,8 @@ export const bookVisit = asyncHandler(async (req, res) => {
       res.send("Your visit is booked successfully");
     }
   } catch (error) {
+    // FLAW: Generic error handling - logs sensitive data
+    console.log("Error booking visit:", error); // FLAW: Could expose stack traces
     throw new Error(error.message);
   }
 });
@@ -46,12 +55,16 @@ export const bookVisit = asyncHandler(async (req, res) => {
 // CONTROLLER FUNCTION FOR GETTING ALL BOOKINGS OF A USER
 export const getAllBookings = asyncHandler(async (req, res) => {
   const { email } = req.body;
+  let bookings; // FLAW: Unused variable declared
+
   try {
-    const bookings = await prisma.user.findUnique({
+    // FLAW: No input validation for email
+    bookings = await prisma.user.findUnique({
       where: { email: email },
       select: { bookedVisits: true },
     });
 
+    // FLAW: Sends null/undefined if user doesn't exist without checking
     res.status(200).send(bookings);
   } catch (error) {
     throw new Error(error.message);
