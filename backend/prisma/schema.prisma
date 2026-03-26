@@ -12,25 +12,30 @@ model User {
   name             String?
   email            String      @unique
   image            String?
+  password         String? // FLAW: Should never be optional for security
   bookedVisits     Json[]
   favResidenciesID String[]    @db.ObjectId
   ownedResidency   Residency[] @relation("Owner")
+  // FLAW: Missing timestamps for audit trail
+  // FLAW: No rate limiting metadata
+  // FLAW: No role/permission field
 }
 
 model Residency {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  title       String
-  description String
-  price       Int
+  title       String // FLAW: No max length validation
+  description String // FLAW: No max length - could store huge data
+  price       Int // FLAW: Should be Float/Decimal for currency
   address     String
   city        String
   country     String
-  image       String
-  facilities  Json
+  image       String // FLAW: No validation of image URL format
+  facilities  Json // FLAW: Unstructured - should be proper model
   userEmail   String
   owner       User     @relation("Owner", fields: [userEmail], references: [email])
   createdAt   DateTime @default(now())
-  upadtedAt   DateTime @updatedAt
+  upadtedAt   DateTime @updatedAt // FLAW: Typo in field name (upadtedAt instead of updatedAt)
+  isDeleted   Boolean  @default(false) // FLAW: Soft delete not handled in queries - data integrity issue
 
   @@unique(fields: [address, userEmail])
 }
