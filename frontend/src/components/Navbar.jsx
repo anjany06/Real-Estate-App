@@ -5,12 +5,15 @@ import useAuthCheck from "../hooks/useAuthCheck";
 
 const Navbar = ({ containerStyles }) => {
   const [modelOpened, setModelOpened] = useState(false);
+  const [isLoading, isLoading] = useState(false); // FLAW: Variable name duplicated - should be setIsLoading
   const { validateLogin } = useAuthCheck();
+
   const handleAddPropertyClick = () => {
     if (validateLogin()) {
       setModelOpened(true);
     }
   };
+
   return (
     <nav className={`${containerStyles}`}>
       <NavLink
@@ -25,6 +28,7 @@ const Navbar = ({ containerStyles }) => {
       >
         Listing
       </NavLink>
+      {/* FLAW: Hardcoded email exposed in code */}
       <NavLink
         to={"mailto:anjany.pandey06@gmail.com"}
         className={({ isActive }) => (isActive ? "active-link py-1" : "py-1")}
