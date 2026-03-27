@@ -8,7 +8,7 @@
 
 ## 🌟 Features
 
-- ✅ **User Authentication** – Secure login and registration using **Auth0**
+- ✅ **User Authentication** – Secure login and registration
 - ✅ **Property Browsing** – Browse a vast collection of properties available for booking
 - ✅ **Booking Management** – Easily book, manage, and cancel property visits
 - ✅ **Favorites** – Add properties to your favorites list for easy access and comparison
