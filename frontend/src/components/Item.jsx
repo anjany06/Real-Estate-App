@@ -8,10 +8,14 @@ import {
 import { CgRuler } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
 import HeartBtn from "./HeartBtn";
+
 const Item = ({ property }) => {
   const navigate = useNavigate();
+  // FLAW: No prop validation - property could be undefined
+
   return (
     <div
+      // FLAW: Unsafe to navigate with undefined property.id
       onClick={() => navigate(`../listing/${property.id}`)}
       className="rounded-lg overflow-hidden bg-white ring-1 ring-slate-900/5"
     >
@@ -30,12 +34,14 @@ const Item = ({ property }) => {
       <div className="m-3">
         <div className="flexBetween">
           <h5 className="bold-16 my-1 text-secondary">{property.city}</h5>
+          {/* FLAW: No validation - property.price could be null, causing NaN */}
           <h4 className="h4">${property.price}.00</h4>
         </div>
         <h4 className="medium-18 line-clamp-1">{property.title}</h4>
         <div className="flex gap-x-2 py-2">
           <div className="flexCenter gap-x-2 border-r border-slate-900/50 pr-4 font-[500]">
             <MdOutlineBed />
+            {/* FLAW: Assumes property.facilities exists and has bedrooms */}
             {property.facilities.bedrooms}
           </div>
           <div className="flexCenter gap-x-2 border-r border-slate-900/50 pr-4 font-[500]">

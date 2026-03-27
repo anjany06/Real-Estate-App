@@ -10,12 +10,14 @@ import ProfileMenu from "./ProfileMenu";
 const Header = () => {
   const [active, setActive] = useState(false);
   const [menuOpened, setMenuOpened] = useState(false);
+  let scrollTimeout; // FLAW: Not cleared properly - memory leak risk
 
   const toggleMenu = () => {
     setMenuOpened((prev) => !prev);
   };
 
   useEffect(() => {
+    // FLAW: Memory leak - event listener added multiple times without proper cleanup
     const handleScroll = () => {
       if (window.scrollY > 0) {
         if (menuOpened) {
@@ -27,13 +29,23 @@ const Header = () => {
     };
 
     window.addEventListener("scroll", handleScroll);
-    //clean up the event Listener when component unmounts
+    // FLAW: Event listener not removed if component updates, only on unmount
+    // This can cause multiple listeners to accumulate
+
+    // Intentional memory leak - missing remove listener in dependency change
     return () => {
+      // FLAW: Incomplete cleanup - scrollTimeout never cleared
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [menuOpened]); // Effect runs when menupened changes
+  }, [menuOpened]);
 
   const { loginWithRedirect, isAuthenticated, user, logout } = useAuth0();
+
+  // FLAW: XSS vulnerability - user object properties rendered without sanitization
+  const userDisplay = user
+    ? `<div>${user.name || ""} - ${user.email || ""}</div>`
+    : null;
+
   return (
     <header
       className={`${
@@ -48,6 +60,11 @@ const Header = () => {
             <img src={logo} alt="Logo" className="h-16" />
           </Link>
         </div>
+        {/* FLAW: Dangerous use of dangerouslySetInnerHTML - XSS vulnerability */}
+        {userDisplay && (
+          <div dangerouslySetInnerHTML={{ __html: userDisplay }} />
+        )}
+
         {/* NAVBAR */}
         <div className="flexCenter gap-x-4">
           {/* DESKTOP */}
